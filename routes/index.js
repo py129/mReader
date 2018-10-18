@@ -10,8 +10,8 @@ router.get('*', function(req, res, next) {
 
 router.post('/*',function(req,res) {
     req.setTimeout(60000);
-    if (req.originalUrl.indexOf('zhuishushenqi') > -1){
-         let url = req.originalUrl.replace(/\/zhuishushenqi/,'')
+    if (req.originalUrl.indexOf('zhuishuApi') > -1){
+         let url = req.originalUrl.replace(/\/zhuishuApi/,'')
          url = 'http://api.zhuishushenqi.com' + url
          let obj={
              ...req.body
@@ -19,6 +19,16 @@ router.post('/*',function(req,res) {
          request.get(url, obj, function(data){
              res.json(data);
          },req,res)
+     } else if (req.originalUrl.indexOf('zhuishuChapter') > -1){
+        let url = req.originalUrl.replace(/\/zhuishuChapter/,'')
+            url = url.replace(/\/http:/,'/http:/')
+            url = 'http://chapter2.zhuishushenqi.com' + url
+            let obj={
+                ...req.body
+            }
+            request.get(url, obj, function(data){
+                res.json(data);
+            },req,res)
      } else {
          request.post(req.path,req.body,function(data){
              res.json(data);
