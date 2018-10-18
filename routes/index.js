@@ -21,7 +21,9 @@ router.post('/*',function(req,res) {
          },req,res)
      } else if (req.originalUrl.indexOf('zhuishuChapter') > -1){
         let url = req.originalUrl.replace(/\/zhuishuChapter/,'')
-            url = url.replace(/\/http:/,'/http:/')
+            if ( url.indexOf('/http://') == -1 ){
+                url = url.replace(/\/http:/,'/http:/')
+            }
             url = 'http://chapter2.zhuishushenqi.com' + url
             let obj={
                 ...req.body
