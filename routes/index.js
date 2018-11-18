@@ -5,6 +5,7 @@ var request = require('../tool/request.js');
 
 /* GET home page. */
 router.get('*', function(req, res, next) {
+    console.leog(123)
   res.render('index');
 });
 
