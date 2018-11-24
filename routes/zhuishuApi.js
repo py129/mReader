@@ -7,14 +7,13 @@ var util = require('../tool/util.js');
 
 router.get('*', function(req, res, next) {
     console.log('==========================')
-    console.log(req)
     console.log(req.query)
-    
     let url = req.originalUrl.split('/')[2]
     if (url){
         let obj={
             ...req.query
         }
+        console.log( url +':' + apis[url])
         request.get(apis[url], obj, function(data){
             res.json(data);
         },req,res)
