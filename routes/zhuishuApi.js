@@ -6,10 +6,9 @@ var apis = require('../tool/apis.js');
 var util = require('../tool/util.js');
 
 router.get('*', function(req, res, next) {
-    console.log('==========================')
+    console.log('===================================')
     console.log(req.query)
-    console.log(req.originalUrl)
-    let url = req.originalUrl.split('/')[2]
+    let url = req.params['0'].split('/')[1]
     if (url){
         let obj={
             ...req.query
