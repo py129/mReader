@@ -17,11 +17,10 @@ router.get('*', function(req, res, next) {
         console.log('============22222=======================')
         console.log(postUrl)
         if(obj.paramsList){
-            for (const key in obj.paramsList) {
-                if (obj.paramsList.hasOwnProperty(key)) {
-                    postUrl = postUrl + '/' + obj.paramsList[key];
-                }
-            }
+            let arr = JSON.parse(obj.paramsList) || []
+            arr.forEach(element => {
+                postUrl = postUrl + '/' + element
+            });
         }
         console.log('============33333=======================')
         console.log( postUrl )
