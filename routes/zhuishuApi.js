@@ -22,7 +22,7 @@ router.get('*', function(req, res, next) {
                 }
             }
         }
-        request.get(apis[url], obj, function(data){
+        request.get(postUrl, obj, function(data){
             res.json(data);
         },req,res)
     } else {
