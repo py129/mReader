@@ -16,9 +16,11 @@ router.get('*', function(req, res, next) {
         console.log( url +':' + apis[url])
         let postUrl = apis[url] || ''
         if(obj.paramsList){
-            obj.paramsList.forEach((item)=>{
-                postUrl = postUrl + '/' + item
-            })
+            for (const key in obj.paramsList) {
+                if (obj.paramsList.hasOwnProperty(key)) {
+                    postUrl = postUrl + '/' + obj.paramsList[key];
+                }
+            }
         }
         request.get(apis[url], obj, function(data){
             res.json(data);
