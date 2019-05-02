@@ -6,15 +6,16 @@ var apis = require('../tool/apis.js');
 var util = require('../tool/util.js');
 
 router.get('*', function(req, res, next) {
-    console.log('===================================')
+    console.log('=======1111============================')
     console.log(req.query)
     let url = req.params['0'].split('/')[1]
     if (url){
         let obj={
             ...req.query
         }
-        console.log( url +':' + apis[url])
         let postUrl = apis[url] || ''
+        console.log('============22222=======================')
+        console.log(postUrl)
         if(obj.paramsList){
             for (const key in obj.paramsList) {
                 if (obj.paramsList.hasOwnProperty(key)) {
@@ -22,6 +23,8 @@ router.get('*', function(req, res, next) {
                 }
             }
         }
+        console.log('============33333=======================')
+        console.log( postUrl )
         request.get(postUrl, obj, function(data){
             res.json(data);
         },req,res)
