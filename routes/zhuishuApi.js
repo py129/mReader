@@ -14,6 +14,12 @@ router.get('*', function(req, res, next) {
             ...req.query
         }
         console.log( url +':' + apis[url])
+        let postUrl = apis[url] || ''
+        if(obj.paramsList){
+            obj.paramsList.forEach((item)=>{
+                postUrl = postUrl + '/' + item
+            })
+        }
         request.get(apis[url], obj, function(data){
             res.json(data);
         },req,res)
