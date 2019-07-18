@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "online": "PORT=3200 NODE_ENV=online forever start -a -l /data/logs/mReader.log ./bin/www -e"
+    "online": "PORT=3060 NODE_ENV=online forever start -a -l /data/logs/mReader.log ./bin/www -e"
   },
   "dependencies": {
     "body-parser": "~1.15.2",
